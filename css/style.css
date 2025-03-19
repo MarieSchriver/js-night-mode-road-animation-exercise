@@ -18,3 +18,132 @@
     /* Baggrundsfarve med gradient */
 }
 
+.sun{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 50%;
+    top: 100px;
+    left: 55%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 50px #fff;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.bg{
+    position: absolute;
+    width: 100%;
+    height: 280px;
+    bottom: 0;
+    background: url(../img/bg.png);
+    background-size: 1500px;
+    background-repeat: repeat-x; /* gentage baggrundsbilledet horizontalt*/
+    animation: animateBg 17s linear infinite;
+    /*konstant bevægelse*/
+}
+
+@keyframes animateBg {
+    0% {
+        background-position-x: 0px; /*starter baggrunden fra 0px*/
+    }
+    100% {
+        background-position-x: -1500px ; /*flytter baggrunden -1500px mod venstre*/
+    }
+}
+
+.car1{
+    position: absolute;
+    bottom: 20px;
+    max-width: 200px;
+    z-index: 1;
+    left: -200px;
+    animation: car1 5s linear infinite;
+    /*bevæger sig hen over skærmen på 18s i samme hastighed*/
+}
+
+@keyframes car1 {
+    0% {
+        transform: translateX(-200px); /* Start udenfor skærmen */
+    }
+    100% {
+        transform: translateX(calc(100vw + 200px)); /* Kør helt til højre */
+    }
+}
+
+.car2{
+    position: absolute;
+    bottom: 50px;
+    max-width: 200px;
+    animation: car2 9s linear infinite;
+    /*bevæger sig hen over skærmen på 12s i samme hastighed modsatte retning end car1*/
+    /*z-index: 1;*/
+}
+
+@keyframes car2 {
+    0% {
+        transform: translateX(-200px); /* Kør ud af venstre side */
+    }
+    100% {
+        transform: translateX(calc(100vw + 200px)); /* Start helt ude til højre */
+    }
+}
+
+.bus{
+    position: absolute;
+    bottom: 0;
+    max-width: 200px;
+    left: -200px;
+    animation: bus 15s linear infinite;
+}
+
+@keyframes bus {
+    0% {
+        transform: translateX(0px)rotateY(180deg); /*starter fra 0px*/
+    }
+    90%, 100% {
+        transform: translateX(calc(100vw + 200px)) rotateY(180deg);
+        /*flytter bilen 100vw + 200px til højre og forsvinder ud af skærmen*/
+    }
+}
+
+.truck{
+position: absolute;
+bottom: 0;
+max-width: 200px;
+left: -200px;
+animation: truck 25s linear infinite;
+}
+
+@keyframes truck {
+    0% {
+        transform: translateX(0px) rotateY(180deg); /*starter fra 0px*/
+    }
+    90%, 100% {
+        transform: translateX( calc(100vw + 200px)) rotateY(180deg);
+        /*flytter bilen 100vw + 200px til højre og forsvinder ud af skærmen*/
+    }
+}
+
+/*night mode*/
+.scene.night{
+    background: #222833;
+}
+
+/*ændre solens position*/
+.scene.night.sun{
+    left: 45%;
+    box-shadow: 0 0 0 #fff;
+}
+
+.scene.night .sun::before{
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    background: #222833;
+    border-radius: 50%;
+}
